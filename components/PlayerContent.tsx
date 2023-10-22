@@ -1,6 +1,7 @@
 "use client";
 
 import { Song } from "@/types";
+// @ts-ignore
 import useSound from "use-sound";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import MediaItem from "./MediaItem";
