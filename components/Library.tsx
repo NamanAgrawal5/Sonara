@@ -22,9 +22,9 @@ const Library: React.FC<LibraryProps> = ({songs}) => {
     if (!user) {
       return authModal.onOpen();
     }
-    if(!subscription){
-      return SubsribeModal.onOpen();
-    }
+    // if(!subscription){
+    //   return SubsribeModal.onOpen();
+    // }
     return uploadModal.onOpen();
   };
   return (
