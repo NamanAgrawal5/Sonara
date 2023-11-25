@@ -20,7 +20,7 @@ const SearchInput = ()=>{
         router.push(url);
     },[debouncedValue,router]);
     return (
-        <Input placeholder="What do you what to listen to ?" value={value} onChange={(e)=>setValue(e.target.value)} />
+        <Input className="bg-[#5C6B73] text-[#E0FBFC]" placeholder="What do you what to listen to ?" value={value} onChange={(e)=>setValue(e.target.value)} />
     )
 }
 export default SearchInput;

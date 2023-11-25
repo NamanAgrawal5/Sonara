@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/hooks/useUser";
 import { useState, useEffect } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
+import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import toast from "react-hot-toast";
 interface LikeButtonProps {
   songId: string;
@@ -34,7 +36,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
     };
     fetchData();
   }, [songId,supabaseClient,user?.id]);
-  const Icon = isLiked? AiFillHeart: AiOutlineHeart
+  const Icon = isLiked? StarOutlinedIcon : StarOutlineOutlinedIcon;
   const handleLike = async () =>{
     if(!user){
         return authModal.onOpen();
@@ -62,7 +64,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
   }
   return(
     <button onClick={handleLike}>
-        <Icon color={isLiked? '#22c55e':'white'} size={25} className="hover:opacity-75 transition" />
+        <Icon className={`hover:opacity-75 transition ${isLiked? "text-[#9DB4C0]" : "text-white"}`} />
     </button>
   )
 };
