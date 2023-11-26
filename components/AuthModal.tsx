@@ -33,7 +33,7 @@ const AuthModal = () => {
         isOpen={isOpen}
         onChange={onChange}
       >
-        <Auth theme="dark"
+        <Auth theme="#C2DFE3"
         magicLink
         providers={["github","google"]}
         supabaseClient={supabaseClient}
@@ -42,8 +42,8 @@ const AuthModal = () => {
             variables: {
                 default: {
                     colors:{
-                        brand: '#404040',
-                        brandAccent: '#22c55e'
+                        brand: '#5C6B73',
+                        brandAccent: '#C2DFE3'
                     }
                 }
             }
