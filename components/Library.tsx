@@ -80,12 +80,12 @@ const Library: React.FC<LibraryProps> = ({ songs,libraries }) => {
         <div className="inline-flex items-center gap-x-2">
           <IoLibrary className="text-neutral-400" size={26} />
           <p className="text-neutral-400 font-medium text-md">Your Library</p>
-        </div>
         <AiOutlinePlus
           onClick={libClick}
           size={20}
           className="text-neutral-400 cursor-pointer hover:text-white transition"
         />
+        </div>
       </div>
       <div className="flex flex-col gap-y-2 mt-4 px-3">
         {libraries.slice(0, 3).map((item) => (
