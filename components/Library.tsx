@@ -8,14 +8,17 @@ import { useUser } from "@/hooks/useUser";
 import useUploadModal from "@/hooks/useUploadModal";
 import useLibraryModal from "@/hooks/useLibraryModal";
 import { Song } from "@/types";
+import {Lib} from "@/types";
 import MediaItem from "./MediaItem";
 import useOnPlay from "@/hooks/useOnPlay";
 import useSubscribeModal from "@/hooks/useSubscribeModal";
+import LibItem from "./LibItem";
 
 interface LibraryProps {
   songs: Song[];
+  libraries: Lib[];
 }
-const Library: React.FC<LibraryProps> = ({ songs }) => {
+const Library: React.FC<LibraryProps> = ({ songs,libraries }) => {
   const SubsribeModal = useSubscribeModal();
   const authModal = useAuthModal();
   const router = useRouter();
@@ -51,6 +54,8 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
           className="text-neutral-400 cursor-pointer hover:text-white transition"
         />
       </div>
+      {user ? (
+      <>
       <div className="flex flex-col gap-y-2 mt-4 px-3">
         {songs.slice(0, 3).map((item) => (
           <MediaItem
@@ -60,13 +65,14 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
           />
         ))}
       </div>
-      {user ? (
+      
         <button
           onClick={() => router.push("/songs")}
           className="ml-auto text-neutral-400 cursor-pointer hover:text-[#E0FBFC] transition mr-5"
         >
           <span>See More</span>
         </button>
+        </>
       ) : (
         <span className="ml-10 text-neutral-300 ">No Songs Added</span>
       )}
@@ -80,6 +86,14 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
           size={20}
           className="text-neutral-400 cursor-pointer hover:text-white transition"
         />
+      </div>
+      <div className="flex flex-col gap-y-2 mt-4 px-3">
+        {libraries.slice(0, 3).map((item) => (
+          <LibItem
+            key={item.library_id}
+            data={item}
+          />
+        ))}
       </div>
     </div>
   );

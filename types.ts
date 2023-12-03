@@ -9,7 +9,7 @@ export interface Song{
     song_path:string;
     image_path:string;
 }
-export interface Library{
+export interface Lib{
     library_id: string,
     created_at: string,
     title: string,
