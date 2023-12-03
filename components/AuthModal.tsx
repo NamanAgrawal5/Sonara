@@ -33,9 +33,9 @@ const AuthModal = () => {
         isOpen={isOpen}
         onChange={onChange}
       >
-        <Auth theme="#C2DFE3"
+        <Auth theme="#000"
         magicLink
-        providers={["github","google"]}
+        providers={["google"]}
         supabaseClient={supabaseClient}
         appearance={{
             theme: ThemeSupa,

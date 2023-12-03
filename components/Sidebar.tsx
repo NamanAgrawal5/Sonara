@@ -8,13 +8,15 @@ import { Box } from "./Box";
 import { SidebarItem } from "./SidebarItem";
 import Library from "./Library";
 import { Song } from "@/types";
+import {Lib} from "@/types";
 import usePlayer from "@/hooks/usePlayer";
 import { twMerge } from "tailwind-merge";
 interface SidebarProps {
   children: React.ReactNode;
   songs: Song[];
+  libraries: Lib[];
 }
-export const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ children, songs, libraries }) => {
   const pathname = usePathname();
   const player = usePlayer();
   const routes = useMemo(
@@ -53,7 +55,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
           </div>
         </Box>
         <Box className="overflow-y-auto h-full bg-[#253237]">
-          <Library songs={songs} />
+          <Library songs={songs} libraries={libraries} />
         </Box>
       </div>
       <main className="h-full flex-1 overflow-y-auto py-2">{children}</main>

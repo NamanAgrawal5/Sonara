@@ -9,6 +9,13 @@ export interface Song{
     song_path:string;
     image_path:string;
 }
+export interface Lib{
+    library_id: string,
+    created_at: string,
+    title: string,
+    image_path: string,
+    user_id: string
+}
 export interface UserDetails{
     id: string,
     first_name: string,
