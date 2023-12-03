@@ -1,15 +1,16 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { TbPlaylist } from "react-icons/tb";
+import { IoLibrary } from "react-icons/io5";
 import { AiOutlinePlus } from "react-icons/ai";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
 import useUploadModal from "@/hooks/useUploadModal";
+import useLibraryModal from "@/hooks/useLibraryModal";
 import { Song } from "@/types";
 import MediaItem from "./MediaItem";
 import useOnPlay from "@/hooks/useOnPlay";
 import useSubscribeModal from "@/hooks/useSubscribeModal";
-import { Router } from "next/router";
 
 interface LibraryProps {
   songs: Song[];
@@ -19,6 +20,7 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
   const authModal = useAuthModal();
   const router = useRouter();
   const uploadModal = useUploadModal();
+  const libraryModal = useLibraryModal();
   const { user, subscription } = useUser();
   const onPlay = useOnPlay(songs);
   const onClick = () => {
@@ -30,6 +32,12 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
     // }
     return uploadModal.onOpen();
   };
+  const libClick = () =>{
+    if(!user){
+      return authModal.onOpen();
+    }
+    return libraryModal.onOpen();
+  }
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between px-5 pt-4">
@@ -62,6 +70,17 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
       ) : (
         <span className="ml-10 text-neutral-300 ">No Songs Added</span>
       )}
+      <div className="flex items-center justify-between px-5 pt-4">
+        <div className="inline-flex items-center gap-x-2">
+          <IoLibrary className="text-neutral-400" size={26} />
+          <p className="text-neutral-400 font-medium text-md">Your Library</p>
+        </div>
+        <AiOutlinePlus
+          onClick={libClick}
+          size={20}
+          className="text-neutral-400 cursor-pointer hover:text-white transition"
+        />
+      </div>
     </div>
   );
 };
