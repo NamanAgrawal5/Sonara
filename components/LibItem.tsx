@@ -1,49 +1,47 @@
 "use client";
+
+import { useLibImage } from "@/hooks/useLibImage";
 import { Lib } from "@/types";
 import Image from "next/image";
-import { useLibImage } from "@/hooks/useLibImage";
-interface MediaItemProps{
-    data: Lib;
+import PlayButton from "./PlayButton";
+
+interface SongItemProps {
+  data: Lib;
 }
-const LibItem: React.FC<MediaItemProps> = ({
-    data,
-}) => {
-
-  const imageUrl = useLibImage(data);
-
+const LibItem: React.FC<SongItemProps> = ({ data}) => {
+  const imagePath = useLibImage(data);
   return (
     <div
-    className="flex
-    items-center
-    gap-x-3
-    cursor-pointer
-    hover:bg-neutral-800/50
-    w-full
-    p-2
-    rounded-md"
+      className="
+      relative
+      group
+      flex
+      flex-col
+      items-center
+      justify-center
+      rounded-md
+      overflow-hidden
+      gap-x-4
+    bg-neutral-400/5 
+      cursor-pointer 
+      hover:bg-slate-400/10 
+      transition 
+      p-3
+      "
     >
-        <div className="
-        relative
-        rounded-md
-        min-h-[48px]
-        min-w-[48px]
-        overflow-hidden">
-            <Image
-             fill
-             src={imageUrl || '/images/liked.png'}
-             alt="Media Item"
-             className="object-cover"
-            />
-        </div>
-        <div>
-          <div className="flex flex-col gap-y-1 overflow-hidden">
-            <p className="text-white truncate">
-                {data.title}
-            </p>
-            </div>  
-        </div>
+      <div className="relative aspect-square w-full h-full rounded-md overflow-hidden">
+        <Image
+          className="object-cover"
+          src={imagePath || "/images/liked.png"}
+          fill
+          alt="Image"
+        />
+      </div>
+      <div className="flex flex-col items-start w-full pt-4 gap-y-1">
+        <p className="font-semibold truncate w-full">{data.title}</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default LibItem
+export default LibItem;
