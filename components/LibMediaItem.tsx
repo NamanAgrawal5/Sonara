@@ -4,16 +4,17 @@ import { useLibImage } from "@/hooks/useLibImage";
 import usePlayer from "@/hooks/usePlayer";
 import { Lib } from "@/types";
 import Image from "next/image";
-
+import { useRouter } from "next/navigation";
 interface MediaItemProps{
     data: Lib;
 }
 const LibMediaItem: React.FC<MediaItemProps> = ({
     data,
 }) => {
+  const router = useRouter();
   const imageUrl = useLibImage(data);
   return (
-    <div 
+    <div onClick={()=>router.push(`/library/${data.library_id}`)}
     className="flex
     items-center
     gap-x-3
