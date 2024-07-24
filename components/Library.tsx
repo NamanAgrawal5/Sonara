@@ -12,7 +12,7 @@ import {Lib} from "@/types";
 import MediaItem from "./MediaItem";
 import useOnPlay from "@/hooks/useOnPlay";
 import useSubscribeModal from "@/hooks/useSubscribeModal";
-import LibItem from "./LibItem";
+import LibMediaItem from "./LibMediaItem";
 
 interface LibraryProps {
   songs: Song[];
@@ -89,7 +89,7 @@ const Library: React.FC<LibraryProps> = ({ songs,libraries }) => {
       </div>
       <div className="flex flex-col gap-y-2 mt-4 px-3">
         {libraries.slice(0, 3).map((item) => (
-          <LibItem
+          <LibMediaItem
             key={item.library_id}
             data={item}
           />
