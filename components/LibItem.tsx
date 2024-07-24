@@ -4,14 +4,16 @@ import { useLibImage } from "@/hooks/useLibImage";
 import { Lib } from "@/types";
 import Image from "next/image";
 import PlayButton from "./PlayButton";
+import { useRouter } from "next/navigation";
 
 interface SongItemProps {
   data: Lib;
 }
 const LibItem: React.FC<SongItemProps> = ({ data}) => {
+  const router = useRouter();
   const imagePath = useLibImage(data);
   return (
-    <div
+    <div onClick={()=>router.push(`/library/${data.library_id}`)}
       className="
       relative
       group
